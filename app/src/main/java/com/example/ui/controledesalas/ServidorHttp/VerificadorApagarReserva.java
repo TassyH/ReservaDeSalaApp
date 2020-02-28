@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class VerificadorCadastroReserva  extends AsyncTask<String, Void, String>
+public class VerificadorApagarReserva extends AsyncTask<String, Void, String>
 {
-    String urlWS = "http://172.30.248.158:8080/ReservaDeSala/rest/reserva/cadastrar/";
+    String urlWS = "http://172.30.248.158:8080/ReservaDeSala/rest/reserva/cancelar/";
 
     @Override
     protected String doInBackground(String... strings)
@@ -19,9 +19,9 @@ public class VerificadorCadastroReserva  extends AsyncTask<String, Void, String>
         {
             URL url = new URL(urlWS);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod("GET");
             conn.setRequestProperty("authorization", "secret");
-            conn.setRequestProperty("novaReserva", strings[0]);
+            conn.setRequestProperty("id_reserva", strings[0]);
             conn.setConnectTimeout(2000);
 
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -36,15 +36,16 @@ public class VerificadorCadastroReserva  extends AsyncTask<String, Void, String>
 
 
 
-            System.out.println("cadastro de reserva lincado com o server SIM");
+            System.out.println("ce puxou o cancelamento do server sim bro");
             return result.toString();
         }
         catch (Exception e) {
             e.printStackTrace();
-            System.out.println("nao ta pegando do server NAO");
+            System.out.println("ce nao consegui pegar o cancelamento do server nao");
         }
         return result.toString();
     }
 
 
 }
+

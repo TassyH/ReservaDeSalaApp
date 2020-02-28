@@ -1,5 +1,6 @@
 package com.example.ui.controledesalas.activitysnormal;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,10 +8,13 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -57,36 +61,33 @@ public class ReservaSalaActivity extends AppCompatActivity {
        /* TextView tx_dataAlteracao = findViewById(R.id.tx_dataAlteracao_sala);
         TextView tx_dataCriacao = findViewById(R.id.tx_dataCriacao_sala);*/
         TextView tx_midia = findViewById(R.id.tx_possuiMidia_sala);
-        TextView tx_reservaHoraInicial =  findViewById(R.id.item_datahora_inicial);
-        TextView tx_reservaHoraFinal =  findViewById(R.id.item_datahora_final);
+        TextView tx_reservaHoraInicial = findViewById(R.id.item_datahora_inicial);
+        TextView tx_reservaHoraFinal = findViewById(R.id.item_datahora_final);
         TextView tx_reservaDescricao = findViewById(R.id.item_descricao_reserva);
         TextView tx_reservaNomeSala = findViewById(R.id.item_nome_sala);
         final ConstraintLayout expandir = findViewById(R.id.layoutExpand);
         final CardView cardView = findViewById(R.id.card_reserva);
 
 
+        btn_infor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (expandir.getVisibility() == View.GONE) {
+                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                    expandir.setVisibility(View.VISIBLE);
+                    btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
+                    // btn_infor.setVisibility(R.drawable.icon_btn_cima);
+
+                } else {
+                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                    expandir.setVisibility(View.GONE);
+                    btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
+
+                }
 
 
-
-              btn_infor.setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View v) {
-                      if (expandir.getVisibility()==View.GONE){
-                          TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                          expandir.setVisibility(View.VISIBLE);
-                          btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
-                         // btn_infor.setVisibility(R.drawable.icon_btn_cima);
-
-                      } else {
-                          TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                          expandir.setVisibility(View.GONE);
-                          btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
-
-                      }
-
-
-                  }
-              });
+            }
+        });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -100,44 +101,43 @@ public class ReservaSalaActivity extends AppCompatActivity {
             int position = bundle.getInt("position");
             if (listaSalasFromPref != null) {
 
-                System.out.println("posicao da sala:"+position);
+                System.out.println("posicao da sala:" + position);
 
-                    JSONArray salasJson = new JSONArray(listaSalasFromPref);
+                JSONArray salasJson = new JSONArray(listaSalasFromPref);
 
-                    JSONObject salaJsonObjeto = salasJson.getJSONObject(position);
-                    if (salaJsonObjeto.has("nome") && salaJsonObjeto.has("quantidadePessoasSentadas") && salaJsonObjeto.has("id") && salaJsonObjeto.has("possuiMultimidia")&& salaJsonObjeto.has("possuiArcon") && salaJsonObjeto.has("areaDaSala") && salaJsonObjeto.has("longitude")&& salaJsonObjeto.has("latitude")&& salaJsonObjeto.has("dataCriacao")&& salaJsonObjeto.has("dataAlteracao")&& salaJsonObjeto.has("localizacao")) {
-                        String nome = salaJsonObjeto.getString("nome");
-                        String local = salaJsonObjeto.getString("localizacao");
-                        int quantPessoas = salaJsonObjeto.getInt("quantidadePessoasSentadas");
-                        int idSala = salaJsonObjeto.getInt("id");
-                        double area = salaJsonObjeto.getDouble("areaDaSala");
-                        double longitude  = salaJsonObjeto.getDouble("longitude") ;
-                        double latitude  = salaJsonObjeto.getDouble("latitude");
-                        //String dataCriacao = salaJsonObjeto.getString("dataCriacao");
-                       // String dataAlteracao = salaJsonObjeto.getString("dataAlteracao");
-                        //boolean midia = salaJsonObjeto.getBoolean("pussuiMultimidia");
-                       // boolean refrigeracao = salaJsonObjeto.getBoolean(String.valueOf("possuiArcon"));
+                JSONObject salaJsonObjeto = salasJson.getJSONObject(position);
+                if (salaJsonObjeto.has("nome") && salaJsonObjeto.has("quantidadePessoasSentadas") && salaJsonObjeto.has("id") && salaJsonObjeto.has("possuiMultimidia") && salaJsonObjeto.has("possuiArcon") && salaJsonObjeto.has("areaDaSala") && salaJsonObjeto.has("longitude") && salaJsonObjeto.has("latitude") && salaJsonObjeto.has("dataCriacao") && salaJsonObjeto.has("dataAlteracao") && salaJsonObjeto.has("localizacao")) {
+                    String nome = salaJsonObjeto.getString("nome");
+                    String local = salaJsonObjeto.getString("localizacao");
+                    int quantPessoas = salaJsonObjeto.getInt("quantidadePessoasSentadas");
+                    int idSala = salaJsonObjeto.getInt("id");
+                    double area = salaJsonObjeto.getDouble("areaDaSala");
+                    double longitude = salaJsonObjeto.getDouble("longitude");
+                    double latitude = salaJsonObjeto.getDouble("latitude");
+                    //String dataCriacao = salaJsonObjeto.getString("dataCriacao");
+                    // String dataAlteracao = salaJsonObjeto.getString("dataAlteracao");
+                    //boolean midia = salaJsonObjeto.getBoolean("pussuiMultimidia");
+                    // boolean refrigeracao = salaJsonObjeto.getBoolean(String.valueOf("possuiArcon"));
 
-                        preferences = getSharedPreferences("USER_LOGIN", 0);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("idSala", Integer.toString(idSala));
-                        editor.commit();
-
-
-                        tx_nome.setText(nome);
-                        tx_local.setText("Localizacao: "+local);
-                        tx_quantPessoas.setText("Capacidade: " + quantPessoas+" pessoas");
-                      //  tx_midia.setText("possui midia : "+midia);
-                       // tx_refrigeracao.setText("refrigeracao: "+refrigeracao);
-                        tx_area_sala.setText("Area da sala: " + area);
-                        tx_latitude.setText("Latitude: "+latitude);
-                        tx_longitude.setText("Longitude: "+longitude);
-                        //tx_dataAlteracao.setText("dataAlteracao: "+dataAlteracao);
-                       // tx_dataCriacao.setText("dataCriacao: "+dataCriacao);
+                    preferences = getSharedPreferences("USER_LOGIN", 0);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("idSala", Integer.toString(idSala));
+                    editor.commit();
 
 
+                    tx_nome.setText(nome);
+                    tx_local.setText("Localizacao: " + local);
+                    tx_quantPessoas.setText("Capacidade: " + quantPessoas + " pessoas");
+                    //  tx_midia.setText("possui midia : "+midia);
+                    // tx_refrigeracao.setText("refrigeracao: "+refrigeracao);
+                    tx_area_sala.setText("Area da sala: " + area);
+                    tx_latitude.setText("Latitude: " + latitude);
+                    tx_longitude.setText("Longitude: " + longitude);
+                    //tx_dataAlteracao.setText("dataAlteracao: "+dataAlteracao);
+                    // tx_dataCriacao.setText("dataCriacao: "+dataCriacao);
 
-                    }
+
+                }
 
                 System.out.println(preferences.getString("idSala", null));
 
@@ -162,24 +162,27 @@ public class ReservaSalaActivity extends AppCompatActivity {
                 for (int i = 0; i < reservaJson.length(); i++) {
                     JSONObject reservaJsonObjeto = reservaJson.getJSONObject(i);
 
-                        int id = reservaJsonObjeto.getInt("id");
-                        int idSala = reservaJsonObjeto.getInt("idSala");
-                        int idUsuario = reservaJsonObjeto.getInt("idUsuario");
-                        String dataHoraInicio = reservaJsonObjeto.getString("dataHoraInicio");
-                        String dataHoraFim = reservaJsonObjeto.getString("dataHoraFim");
-                        //boolean ativo = reservaObjeto.getBoolean("ativo");
-                        String descricao = reservaJsonObjeto.getString("descricao");
-                        String nomeOrganizador = reservaJsonObjeto.getString("nomeOrganizador");
+                    int id = reservaJsonObjeto.getInt("id");
+                    int idSala = reservaJsonObjeto.getInt("idSala");
+                    int idUsuario = reservaJsonObjeto.getInt("idUsuario");
+                    String dataHoraInicio = reservaJsonObjeto.getString("dataHoraInicio");
+                    String dataHoraFim = reservaJsonObjeto.getString("dataHoraFim");
+                    //boolean ativo = reservaObjeto.getBoolean("ativo");
+                    String descricao = reservaJsonObjeto.getString("descricao");
+                    String nomeOrganizador = reservaJsonObjeto.getString("nomeOrganizador");
 
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("reservaId", Integer.toString(id));
+                    editor.commit();
 
+                    Reserva novaReserva = new Reserva();
+                    novaReserva.setNomeOrganizador(nomeOrganizador);
+                    novaReserva.setDescricao(descricao);
+                    novaReserva.setHoraIncial(dataHoraInicio);
+                    novaReserva.setHoraFinal(dataHoraFim);
+                    reservas.add(novaReserva);
 
-                        Reserva novaReserva = new Reserva();
-                        novaReserva.setNomeOrganizador(nomeOrganizador);
-                        novaReserva.setDescricao(descricao);
-                        novaReserva.setHoraIncial(dataHoraInicio);
-                        novaReserva.setHoraFinal(dataHoraFim);
-                        reservas.add(novaReserva);
-
+                    System.out.println(preferences.getString("reservaId", null));
 
                 }
 
@@ -189,16 +192,13 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
             }
 
-        } catch(InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch(ExecutionException e){
+        } catch (ExecutionException e) {
             e.printStackTrace();
-        } catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,9 +212,36 @@ public class ReservaSalaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        ListView listaDeReservas = findViewById(R.id.listViewReservas);
+        listaDeReservas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                new AlertDialog.Builder(ReservaSalaActivity.this)
+                        .setTitle("Remove Reservaa")
+                        .setMessage("Tem certeza que deseja remover sua reserva, bro?")
+                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String authServe = "";
+                                String idReserva = "";
+                                idReserva = String.valueOf(reservas.get(position).getId());
+                               /* int idUsuarioDaReservaEfetuada = reservas.get(position).getId_usuario();*/
+
+
+                                System.out.println("id da reserva --> " + idReserva);
+                            }
+                        })
+                        .setNegativeButton("NAO", null)
+                        .show();
+                return true;
+            }
+        });
+    }
 }
+
+
+
 
 
 

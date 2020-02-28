@@ -70,7 +70,6 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
 
 //////////////////////////METODOS ONCLICK////////////////////////////////////////////////////////
 
-      /*  String nomeString = edNomeLocador.getText().toString().trim();*/
         btnFinalizarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,8 +83,6 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
                 String idOrg = preferences.getString("userId", null);
                 String idSala = preferences.getString("idSala", null);
 
-              /*  TextView organizador = findViewById(R.id.ed_nome_organizador);
-                organizador.setText("Organizador: " + preferences.getString("userName", null));*/
 
                 JSONObject reservaJson = new JSONObject();
 
@@ -94,9 +91,6 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
                 dateTimeFormat(horaInicio, horaFim);
                 try {
 
-
-
-                   // reservaJson.put("nome", nomeString);
                     reservaJson.put("descricao", descricaoString);
                     reservaJson.put("data_hora_inicio", dateTimeInicialLong);
                     reservaJson.put("data_hora_fim", dateTimeFinalLong);
