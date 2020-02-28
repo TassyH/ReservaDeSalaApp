@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/ic_pesquisar_aluno_menu"
+        android:icon="@drawable/ic_pesquisa_reserva"
+        app:actionViewClass="android.widget.SearchView"
+        android:title="Consultar"
+        app:showAsAction="ifRoom|collapseActionView">
+    </item>
+</menu>

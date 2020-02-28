@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corBranco"
+    android:orientation="vertical">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corBranco">
+
+    <ImageView
+        android:id="@+id/iv_user"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_user_nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_action_pessoa"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/item_divisor"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_below="@id/iv_user"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user">
+
+    </View>
+
+    <TextView
+        android:id="@+id/tv_DADOS"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/item_divisor"
+        app:layout_constraintTop_toTopOf="@id/item_divisor"
+        android:text="DADOS DO USUARIO"
+        android:padding="8dp"
+        android:layout_centerHorizontal="true"
+
+        android:textSize="20sp"
+        android:ems="10"
+        android:textColor="#000000"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_user_nome"
+        android:textAlignment="textStart"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/iv_user"
+        app:layout_constraintTop_toTopOf="@id/iv_user"
+        android:text="Nome: "
+        android:padding="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_user_email"
+        android:textAlignment="textStart"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_user_nome"
+        app:layout_constraintTop_toTopOf="@id/tv_user_nome"
+        android:text="Email"
+        android:padding="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        tools:ignore="MissingConstraints">
+
+    </TextView>
+
+
+    <View
+        android:id="@+id/item_divisor_DADOS_USER"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_below="@id/tv_user_email"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_user_email"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_email">
+
+    </View>
+
+
+    <TextView
+        android:id="@+id/tv_empresa"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_cadastro_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:ems="10"
+        android:padding="8dp"
+        android:text="EMPRESA"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/tv_user_email"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_user_organizacao"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_empresa"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:padding="8dp"
+        android:text="Organizacao"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/tv_empresa"
+        android:layout_marginTop="50dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+    </TextView>
+
+
+    <Button
+        android:id="@+id/btn_sair_conta"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_margin="80dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="201dp"
+
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="Sair/exit"
+        android:textColor="@color/corBranco"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_organizacao"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

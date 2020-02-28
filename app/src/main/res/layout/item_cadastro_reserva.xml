@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corBranco"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ed_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="30dp"
+                android:layout_marginEnd="30dp"
+                android:textColor="@color/corBack"
+                android:textColorHint="@android:color/black"
+                android:inputType="textMultiLine"
+                android:hint=" Descricao do uso da sala" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+
+            <ImageButton
+                android:id="@+id/btn_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/corBranco"
+                android:layout_marginStart="20dp"
+                app:srcCompat="@drawable/icon_calendario" />
+
+            <TextView
+                android:id="@+id/text_print_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Data da reuniao"
+                android:textAlignment="textEnd"
+                android:textColor="@color/corBack">
+
+            </TextView>
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+
+            <ImageButton
+                android:id="@+id/btn_horai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/corBranco"
+                android:layout_marginStart="20dp"
+                app:srcCompat="@drawable/icon_horai" />
+
+            <TextView
+                android:id="@+id/text_horaioInicial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/corBack"
+                android:textAlignment="center"
+                android:layout_marginHorizontal="10dp"
+                android:hint="Horario Inicial"
+                android:textColorHint="@android:color/black">
+
+            </TextView>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageButton
+                android:id="@+id/btn_horaf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/corBranco"
+                android:layout_marginStart="20dp"
+                app:srcCompat="@drawable/icon_horai" />
+
+            <TextView
+                android:id="@+id/text_horaioFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/corBack"
+                android:layout_marginHorizontal="10dp"
+                android:textColorHint="@android:color/black"
+                android:hint="Horario final">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btFinalReserva"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/botao_radius"
+            android:text="Ok"
+            android:textColor="@color/corBranco"
+            android:layout_height="wrap_content">
+
+        </Button>
+
+    </LinearLayout>
+</ScrollView>
+

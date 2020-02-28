@@ -1,0 +1,24 @@
+{
+  "organizacoes": [
+
+    {
+      "id":"wiseM",
+      "nome":"Wise",
+      "tipo_organizacao":"Matriz",
+      "dominio": "wise.com.br",
+      "ativo": "Ativo",
+      "dataCriacao":"2020-01-20",
+      "dataAlteracao":"2020-01-20"
+    },
+    {
+      "id": "WiseF1",
+      "nome":"Wise",
+      "id_organizacao_pai": "wiseM",
+      "tipo_organizacao":"Filha",
+      "dominio": "wise.com.br",
+      "ativo":"Ativo",
+      "dataCriacao":"2020-01-20",
+      "dataAlteracao":"2020-01-20"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "salas": [
+    {
+      "id": 1,
+      "nome": "Conselho Jedi",
+      "quantidadePessoasSentadas": "Cabe 10 pessoas",
+      "possuiMidia":true,
+      "refrigerada": true,
+      "areaDaSala": 3.5,
+      "localizacao": "1o andar",
+      "estado": true,
+      "latitude": 0.0001,
+      "longitude": 0.0004,
+      "dataCriacao": "2020-01-20",
+      "imagem": "@drawable/img_conselho_jedi",
+      "dataAlteracao": "2020-01-20"
+
+    },
+
+    {
+      "id": 2,
+      "nome": "Tábula redonda",
+      "quantidadePessoasSentadas": "Cabe 12 pessoas",
+      "possuiMidia":true,
+      "refrigeracao": true,
+      "areaDaSala": 3.5,
+      "localizacao": "1o andar",
+      "estado":"sala livre",
+      "latitude": 0.0001,
+      "longitude": 0.0004,
+      "dataCriacao": "2020-01-20",
+      "imagem": "@drawable/img_tabula_redonda",
+      "dataAlteracao": "2020-01-20"
+
+    },
+    {
+      "id": 3,
+      "nome": "Olimpo",
+      "quantidadePessoasSentadas": "Cabe 16 pessoas",
+      "possuiMidia":true,
+      "refrigerada": true,
+      "areaDaSala": 3.5,
+      "localizacao": "1o andar",
+      "estado": "sala livre",
+      "latitude": 0.0001,
+      "longitude": 0.0004,
+      "dataCriacao": "2020-01-20",
+      "imagem": "@drawable/img_olimpo",
+      "dataAlteracao": "2020-01-20"
+
+    },
+    {
+      "id": 4,
+      "nome": "Sala da Justica",
+      "quantidadePessoasSentadas": "cabe 14 pessoas",
+      "possuiMidia":true,
+      "refrigerada": true,
+      "areaDaSala": 3.5,
+      "localizacao": "1o andar",
+      "estado":"sala livre",
+      "latitude": 0.0001,
+      "longitude": 0.0004,
+      "dataCriacao": "2020-01-20",
+      "imagem": "@drawable/img_vidro",
+      "dataAlteracao": "2020-01-20"
+
+    }
+  ]
+}
