@@ -51,23 +51,40 @@
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/item_datahora_final"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:hint="Horario final"
-                    android:padding="5dp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/corBack"
-                    app:layout_constraintTop_toBottomOf="@+id/item_datahora_inicial"
-                    android:textColorHint="@android:color/black"
-                    tools:ignore="MissingConstraints">
 
-                </TextView>
+        <TextView
+            android:id="@+id/item_datahora_final"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Horario final"
+            android:padding="5dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/corBack"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/item_datahora_inicial"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp">
+
+        </TextView>
 
 
-            <TextView
+        <TextView
+            android:id="@+id/item_data_reserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_data_reserva"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Data"
+            android:textStyle="normal"
+            android:padding="5dp"
+            app:layout_constraintTop_toBottomOf="@id/item_datahora_final"
+            tools:ignore="MissingConstraints" />
+
+
+        <TextView
                 android:id="@+id/item_descricao_reserva"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,9 +94,8 @@
                 android:text="reuniao sobre os trainees de pa"
                 android:textStyle="normal"
                 android:padding="5dp"
-                app:layout_constraintTop_toBottomOf="@id/item_datahora_final"
+                app:layout_constraintTop_toBottomOf="@id/item_data_reserva"
                 tools:ignore="MissingConstraints" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

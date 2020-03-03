@@ -56,6 +56,8 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_reserva);
         setTitle(TITULO_APPBAR);
+
+
         configuraHora = getSharedPreferences("HORA_INICIAL", 0);
         btnFinalizarReserva = (Button) findViewById(R.id.btFinalReserva);
         ImageButton btndata = (ImageButton) findViewById(R.id.btn_data);
@@ -181,10 +183,6 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
         calendario.set(Calendar.YEAR, year);
         calendario.set(Calendar.MONTH, month);
         calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        //textoHoraI.setText(simpleDateFormat.format(calendario.getTime()));
-       /* SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
-        String date = (simpleDateFormat.format(calendario.getTime()));*/
-
         String date = DateFormat.getDateInstance(DateFormat.DATE_FIELD).format(calendario.getTime());
         dia.setText(String.format(date));
     }
@@ -240,12 +238,13 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
               Date dateTimeFimParse= dateTimeFormat.parse(dateTimeFinal);
               dateTimeInicialLong = dateTimeInicioParse.getTime();
               dateTimeFinalLong = dateTimeFimParse.getTime();
-            /*  Log.i("teste parse", dateTimeInicioParse.toString());
-              Log.i("teste parse", String.valueOf(dateTimeInicialLong));*/
-
 
               System.out.println("data long"+ dateTimeInicialLong);
               System.out.println("hora long"+ dateTimeInicialLong);
+
+              SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+              SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
+
 
           } catch (ParseException e) {
               e.printStackTrace();

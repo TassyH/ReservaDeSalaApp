@@ -18,12 +18,14 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ui.controledesalas.Adapter.ListaReservasAdapter;
 import com.example.ui.controledesalas.Dao.ReservaDAO;
 import com.example.ui.controledesalas.Modal.Reserva;
 import com.example.ui.controledesalas.Modal.Sala;
 import com.example.ui.controledesalas.R;
+import com.example.ui.controledesalas.ServidorHttp.VerificadorApagarReserva;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorReserva;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorReservaByIdUsuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -48,6 +50,13 @@ public class ReservaSalaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserva_sala);
+        inicializacaoDosComponentes();
+        exibirDadosReserva();
+        cadastrarReserva();
+        excluirReserva();
+
+
+
 
         final ImageButton btn_infor = findViewById(R.id.btn_infor);
         //  TextView tx_titulo = findViewById(R.id.txt_titulo_sala);
@@ -101,8 +110,6 @@ public class ReservaSalaActivity extends AppCompatActivity {
             int position = bundle.getInt("position");
             if (listaSalasFromPref != null) {
 
-                System.out.println("posicao da sala:" + position);
-
                 JSONArray salasJson = new JSONArray(listaSalasFromPref);
 
                 JSONObject salaJsonObjeto = salasJson.getJSONObject(position);
@@ -114,10 +121,8 @@ public class ReservaSalaActivity extends AppCompatActivity {
                     double area = salaJsonObjeto.getDouble("areaDaSala");
                     double longitude = salaJsonObjeto.getDouble("longitude");
                     double latitude = salaJsonObjeto.getDouble("latitude");
-                    //String dataCriacao = salaJsonObjeto.getString("dataCriacao");
-                    // String dataAlteracao = salaJsonObjeto.getString("dataAlteracao");
-                    //boolean midia = salaJsonObjeto.getBoolean("pussuiMultimidia");
-                    // boolean refrigeracao = salaJsonObjeto.getBoolean(String.valueOf("possuiArcon"));
+                    boolean midia = salaJsonObjeto.getBoolean("possuiMultimidia");
+                    boolean refrigeracao = salaJsonObjeto.getBoolean(String.valueOf("possuiArcon"));
 
                     preferences = getSharedPreferences("USER_LOGIN", 0);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -128,18 +133,16 @@ public class ReservaSalaActivity extends AppCompatActivity {
                     tx_nome.setText(nome);
                     tx_local.setText("Localizacao: " + local);
                     tx_quantPessoas.setText("Capacidade: " + quantPessoas + " pessoas");
-                    //  tx_midia.setText("possui midia : "+midia);
-                    // tx_refrigeracao.setText("refrigeracao: "+refrigeracao);
                     tx_area_sala.setText("Area da sala: " + area);
                     tx_latitude.setText("Latitude: " + latitude);
                     tx_longitude.setText("Longitude: " + longitude);
-                    //tx_dataAlteracao.setText("dataAlteracao: "+dataAlteracao);
-                    // tx_dataCriacao.setText("dataCriacao: "+dataCriacao);
+                    tx_midia.setText("possui midia : "+midia);
+                    tx_refrigeracao.setText("refrigeracao: "+refrigeracao);
 
 
                 }
 
-                System.out.println(preferences.getString("idSala", null));
+                System.out.println(preferences.getString("idSala", null));//id da sala vindo do pref
 
             }
 
@@ -167,10 +170,8 @@ public class ReservaSalaActivity extends AppCompatActivity {
                     int idUsuario = reservaJsonObjeto.getInt("idUsuario");
                     String dataHoraInicio = reservaJsonObjeto.getString("dataHoraInicio");
                     String dataHoraFim = reservaJsonObjeto.getString("dataHoraFim");
-                    //boolean ativo = reservaObjeto.getBoolean("ativo");
                     String descricao = reservaJsonObjeto.getString("descricao");
                     String nomeOrganizador = reservaJsonObjeto.getString("nomeOrganizador");
-
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("reservaId", Integer.toString(id));
                     editor.commit();
@@ -182,7 +183,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
                     novaReserva.setHoraFinal(dataHoraFim);
                     reservas.add(novaReserva);
 
-                    System.out.println(preferences.getString("reservaId", null));
+
 
                 }
 
@@ -213,30 +214,70 @@ public class ReservaSalaActivity extends AppCompatActivity {
             }
         });
 
+
+
         ListView listaDeReservas = findViewById(R.id.listViewReservas);
         listaDeReservas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                new AlertDialog.Builder(ReservaSalaActivity.this)
-                        .setTitle("Remove Reservaa")
-                        .setMessage("Tem certeza que deseja remover sua reserva, bro?")
-                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+             /*   SharedPreferences preferences = getSharedPreferences("USER_LOGIN", 0);
+                System.out.println(preferences.getString("reservaId", null));*/
+
+                new AlertDialog.Builder(ReservaSalaActivity.this).setTitle("Deletar").setMessage("quer mesmo deletar essa reserva bro?")
+                        .setPositiveButton("sim", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String authServe = "";
-                                String idReserva = "";
-                                idReserva = String.valueOf(reservas.get(position).getId());
-                               /* int idUsuarioDaReservaEfetuada = reservas.get(position).getId_usuario();*/
+                                SharedPreferences preferences = getSharedPreferences("USER_LOGIN", 0);
+                                String verifDeleteReserva = "";
+                                String idReservaDoPref = "";
+                                idReservaDoPref = preferences.getString("reservaId", null);
+                                idReservaDoPref = String.valueOf(reservas.get(position).getId());
+                                int idUsuarioDaReservaEfetuada = reservas.get(position).getId_usuario();
 
 
-                                System.out.println("id da reserva --> " + idReserva);
+                                System.out.println("id da reserva pra excluir reserva: " + idReservaDoPref);
+
+                                if (idUsuarioDaReservaEfetuada == Integer.parseInt(preferences.getString("userId", null))) {
+                                    try {
+                                        verifDeleteReserva = new VerificadorApagarReserva().execute(idReservaDoPref).get();
+                                        if (verifDeleteReserva.equals("A reserva foi cancelada com sucesso")) {
+                                            reservas.remove(position);
+                                            adapter.notifyDataSetChanged();
+                                            Toast.makeText(ReservaSalaActivity.this, "Reserva excluida com sucesso", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(ReservaSalaActivity.this, "Erro ao exluir reserva", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                } else {
+                                    Toast.makeText(ReservaSalaActivity.this, "nao sei o que deu errado me abraça mano eu quero chorar", Toast.LENGTH_SHORT).show();
+                                }
+
                             }
                         })
-                        .setNegativeButton("NAO", null)
+                        .setNegativeButton("Nao", null)
                         .show();
                 return true;
-            }
-        });
+
+                            }
+                        });
+
+
+
+
+    }
+
+    private void cadastrarReserva() {
+    }
+
+    private void excluirReserva() {
+    }
+
+    private void exibirDadosReserva() {
+    }
+
+    private void inicializacaoDosComponentes() {
     }
 }
 

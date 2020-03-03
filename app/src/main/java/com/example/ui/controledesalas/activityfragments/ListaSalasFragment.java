@@ -52,16 +52,6 @@ public class ListaSalasFragment extends Fragment {
         nomeSala = view.findViewById(R.id.item_nome_sala);
         cardView = view.findViewById(R.id.card_item_lista_salas);
 
-        /*final ConstraintLayout expandir = view.findViewById(R.id.layoutExpand);
-      //  final CardView cardView = view.findViewById(R.id.card_reserva);
-        TextView tx_latitude = view.findViewById(R.id.tx_latitude_sala);
-        TextView tx_longitude = view.findViewById(R.id.tx_longitude_sala);
-        TextView tx_quantPessoas = view.findViewById(R.id.tx_quantPessoas_sala);
-        TextView tx_refrigeracao = view.findViewById(R.id.tx_refrigeracao_sala);
-        TextView tx_area_sala = view.findViewById(R.id.tx_area_sala);
-       *//* TextView tx_dataAlteracao = view.findViewById(R.id.tx_dataAlteracao_sala);
-        TextView tx_dataCriacao = view.findViewById(R.id.tx_dataCriacao_sala);*//*
-        TextView tx_midia = view.findViewById(R.id.tx_possuiMidia_sala);*/
 
         try {
             SharedPreferences preferences = getContext().getSharedPreferences("USER_LOGIN", 0);

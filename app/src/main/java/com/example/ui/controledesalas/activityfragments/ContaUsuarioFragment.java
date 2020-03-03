@@ -40,7 +40,6 @@ public class ContaUsuarioFragment extends Fragment {
         user_email = (TextView) view.findViewById(R.id.tv_user_email);
         user_org = (TextView) view.findViewById(R.id.tv_user_organizacao);
 
-        System.out.println("era uma vez uma tassy");
 
         SharedPreferences preferences = getContext().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
         String idOrg = preferences.getString("userIdOrganizacao", null);
@@ -52,10 +51,6 @@ public class ContaUsuarioFragment extends Fragment {
             user_nome.setText("Nome: "+nomeUser);
             user_email.setText("Email: "+emailUser);
             user_org.setText("Sua Empresa: "+nomeOrganizacao);
-
-
-
-
 
 
                 btnSair.setOnClickListener(new View.OnClickListener() {
@@ -73,13 +68,9 @@ public class ContaUsuarioFragment extends Fragment {
 
                         Intent intent = new Intent(view.getContext(), LoginUsuarioActivity.class);
                         startActivity(intent);
-
-
                     }
 
                 });
-
-
                 return view;
             }
         }

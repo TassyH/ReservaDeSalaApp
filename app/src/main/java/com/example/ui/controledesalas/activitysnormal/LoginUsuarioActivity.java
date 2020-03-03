@@ -111,9 +111,6 @@ public class LoginUsuarioActivity extends AppCompatActivity {
                            }
 
                             Intent intent = new Intent(LoginUsuarioActivity.this, MainActivity.class);
-                           /*// intent.putExtra("nome", nomeString);
-                            intent.putExtra("email", emailString);
-                           //intent.putExtra("Value", nomeString);*/
                             startActivity(intent);
                           } else {
 
