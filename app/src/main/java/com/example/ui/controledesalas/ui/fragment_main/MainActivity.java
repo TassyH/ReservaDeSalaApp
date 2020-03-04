@@ -1,8 +1,13 @@
 package com.example.ui.controledesalas.ui.fragment_main;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.ui.controledesalas.R;
+import com.example.ui.controledesalas.activityfragments.ContaUsuarioFragment;
+import com.example.ui.controledesalas.activityfragments.ListaReservasFragment;
+import com.example.ui.controledesalas.activityfragments.ListaSalasFragment;
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //Initializing the tablayout
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
 
         //Adding the tabs using addTab() method
         tabLayout.addTab(tabLayout.newTab().setText("Suas Reservas"));
@@ -65,24 +70,4 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     }
 
-    }
-
-
-   /* @Override
-    protected void onCreate(Bundle savedInstanceState) {
-      /*  super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        MyPageAdapter sectionsPagerAdapter = new MyPageAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+}

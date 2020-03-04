@@ -1,6 +1,7 @@
 package com.example.ui.controledesalas.activitysnormal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
@@ -35,7 +36,6 @@ import java.util.Date;
 
 public class CadastroReservaActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     public static final String TITULO_APPBAR = "Realizar reservas";
-    ImageButton btndata, btnhoraI, btnhoraF;
     Button btnFinalizarReserva;
     TextView textoData, edNomeLocador;
     EditText edDrescricaoLocador;
@@ -60,24 +60,17 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
 
         configuraHora = getSharedPreferences("HORA_INICIAL", 0);
         btnFinalizarReserva = (Button) findViewById(R.id.btFinalReserva);
-        ImageButton btndata = (ImageButton) findViewById(R.id.btn_data);
-        ImageButton btnhorai = (ImageButton) findViewById(R.id.btn_horai);
-        ImageButton btnhoraf = (ImageButton) findViewById(R.id.btn_horaf);
         textoData = (TextView) findViewById(R.id.text_print_data);
         horaInicio = (TextView) findViewById(R.id.text_horaioInicial);
         horaFim = (TextView) findViewById(R.id.text_horaioFinal);
         edDrescricaoLocador = (EditText) findViewById(R.id.ed_descricao);
-       // edNomeLocador = (TextView) findViewById(R.id.ed_nome_organizador);
-
-
-//////////////////////////METODOS ONCLICK////////////////////////////////////////////////////////
+        CardView cardHorai = findViewById(R.id.cardHoraI);
+        CardView cardHoraf = findViewById(R.id.cardHoraF);
+        CardView cardData = findViewById(R.id.cardData);
 
         btnFinalizarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                /////////////////////////////CADASTRO RESERVA ////////////////////////////////////////////////////////////////
 
                 String descricaoString = edDrescricaoLocador.getText().toString().trim();
                 String authReturn = "";
@@ -133,14 +126,14 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
 
 
         ////////////////////////////data e hora //////////////////////////////////////
-        btndata.setOnClickListener(new View.OnClickListener() {
+        cardData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 datePickerCalendar.show(getSupportFragmentManager(),"Date Picker");
 
             }
         });
-        btnhorai.setOnClickListener(new View.OnClickListener() {
+        cardHorai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 timePickerCalendar.show(getSupportFragmentManager(), "Time Picker");
@@ -152,7 +145,7 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
 
             }
         });
-        btnhoraf.setOnClickListener(new View.OnClickListener() {
+        cardHoraf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 timePickerCalendar.show(getSupportFragmentManager(), "Time Picker");

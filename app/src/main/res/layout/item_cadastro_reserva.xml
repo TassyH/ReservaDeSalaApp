@@ -31,27 +31,30 @@
         </LinearLayout>
 
     <androidx.cardview.widget.CardView
+            android:id="@+id/cardData"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="70dp"
             app:cardElevation="0dp"
             app:cardMaxElevation="0dp"
             app:cardCornerRadius="1dp"
             app:cardUseCompatPadding="true"
             app:cardPreventCornerOverlap="false"
             android:background="@null"
+             android:layout_marginEnd="10dp"
             android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="40dp"
+            android:gravity="start">
 
 
             <ImageButton
                 android:id="@+id/btn_data"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="30dp"
                 android:background="@color/corBranco"
-                android:layout_marginStart="80dp"
                 app:srcCompat="@drawable/icon_calendarioo" />
 
             <TextView
@@ -60,9 +63,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:text="Data da reuniao"
-                android:textSize="20dp"
                 android:textAlignment="textEnd"
-                android:textColor="@color/corBack">
+                android:textColor="@color/corBack"
+                android:textSize="25dp">
 
             </TextView>
 
@@ -71,8 +74,9 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardHoraI"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="70dp"
             app:cardElevation="0dp"
             app:cardMaxElevation="0dp"
             app:cardCornerRadius="1dp"
@@ -90,7 +94,7 @@
                 android:layout_width="70dp"
                 android:layout_height="50dp"
                 android:background="@color/corBranco"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="30dp"
                 app:srcCompat="@drawable/icon_horai" />
 
             <TextView
@@ -98,10 +102,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/corBack"
-                android:textAlignment="center"
                 android:layout_marginHorizontal="10dp"
                 android:hint="Horario Inicial"
-                android:textSize="20dp"
+                android:textSize="25dp"
+                android:textAlignment="textStart"
                 android:textColorHint="@android:color/black">
 
             </TextView>
@@ -111,8 +115,9 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardHoraF"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="70dp"
             app:cardElevation="0dp"
             app:cardMaxElevation="0dp"
             app:cardCornerRadius="1dp"
@@ -129,17 +134,17 @@
                 android:layout_width="70dp"
                 android:layout_height="50dp"
                 android:background="@color/corBranco"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="30dp"
                 app:srcCompat="@drawable/icon_horai" />
 
             <TextView
                 android:id="@+id/text_horaioFinal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/corBack"
                 android:layout_marginHorizontal="10dp"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textColorHint="@android:color/black"
                 android:hint="Horario final">
 

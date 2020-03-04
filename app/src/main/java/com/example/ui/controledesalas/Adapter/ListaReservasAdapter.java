@@ -58,29 +58,39 @@ public class ListaReservasAdapter extends BaseAdapter {
         mostraHoraInicial(viewCriada, reserva);
         mostraHorafinal(viewCriada, reserva);
 
-
-       SimpleDateFormat dateFormatCerto = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormatOriginal = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormatCerto = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat hourFormatOriginal = new SimpleDateFormat("HH:mm:ss");
         SimpleDateFormat hourFormatCerto = new SimpleDateFormat("HH:mm");
 
         for (int i = 0; i < 2; i++) {
-            String dataHora;
+            String dataCompleta;
 
             if (i == 0) {
-                dataHora = reserva.getHoraIncial();
+                dataCompleta = reserva.getHoraIncial();
             } else {
-                dataHora = reserva.getHoraFinal();
+                dataCompleta = reserva.getHoraFinal();
             }
-            String[] dataSplit = dataHora.split("T");
+            String[] dataSplit = dataCompleta.split("T");
             String[] horaInicioSplit = dataSplit[1].split("Z");
 
+            System.out.println("texugos: "+dataCompleta);
+
+            System.out.println("pandas: "+dataSplit[1]);
+
+            System.out.println("coalas: "+horaInicioSplit);
+
+
 /*
+
             try {
-                String dateStr = dateFormatCerto.format(dataSplit[0]);
+
+                Date dateParse = dateFormatOriginal.parse(dataSplit[0]);
+                String dateStr = dateFormatCerto.format(dateParse);
                 Date horaInicioParseada = hourFormatOriginal.parse(horaInicioSplit[0]);
                 String horaStr = hourFormatCerto.format(horaInicioParseada);
 
-                System.out.println(dataSplit[1]);
+                System.out.println("pandas: "+dataSplit[1]);
 
 
                 data.setText(dateStr);
@@ -94,8 +104,9 @@ public class ListaReservasAdapter extends BaseAdapter {
 
             } catch (ParseException e) {
                 e.printStackTrace();
-            }*/
+            }
 
+*/
         }
 
         return viewCriada;

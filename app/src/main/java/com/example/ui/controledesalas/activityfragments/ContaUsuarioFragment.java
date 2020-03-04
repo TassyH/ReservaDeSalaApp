@@ -73,5 +73,6 @@ public class ContaUsuarioFragment extends Fragment {
                 });
                 return view;
             }
-        }
+
+}
 
