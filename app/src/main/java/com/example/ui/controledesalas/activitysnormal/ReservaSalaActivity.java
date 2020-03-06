@@ -54,7 +54,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
         exibirDadosReserva();
         cadastrarReserva();
 
-        final ImageButton btn_infor = findViewById(R.id.btn_infor);
+        final FloatingActionButton btn_infor = findViewById(R.id.fab_infor);
         TextView tx_nome = findViewById(R.id.tx_nome_sala);
         TextView tx_local = findViewById(R.id.tx_local_sala);
         TextView tx_latitude = findViewById(R.id.tx_latitude_sala);
@@ -75,13 +75,13 @@ public class ReservaSalaActivity extends AppCompatActivity {
                 if (expandir.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
                     expandir.setVisibility(View.VISIBLE);
-                    btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
+                    //btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
                     // btn_infor.setVisibility(R.drawable.icon_btn_cima);
 
                 } else {
                     TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
                     expandir.setVisibility(View.GONE);
-                    btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
+                   // btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
 
                 }
 
