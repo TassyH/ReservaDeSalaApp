@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.ui.controledesalas.R;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorLogin;
 import com.example.ui.controledesalas.ui.fragment_main.MainActivity;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONObject;
 
@@ -38,8 +39,8 @@ public class LoginUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_usuario);
         ///////////////////////////
 
-        final EditText edEmailLog = (EditText) findViewById(R.id.ed_login_email);
-        final EditText edSenhaLog = (EditText) findViewById(R.id.ed_login_senha);
+        final TextInputLayout edEmailLog = findViewById(R.id.ed_login_email);
+        final TextInputLayout edSenhaLog = findViewById(R.id.ed_login_senha);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnCadastrar2 = (Button) findViewById(R.id.btn_cadastro2);
 
@@ -59,8 +60,8 @@ public class LoginUsuarioActivity extends AppCompatActivity {
                 try {
 
                     String authReturn = null;//q
-                    String emailString = edEmailLog.getText().toString().trim();
-                    String senhaString = edSenhaLog.getText().toString().trim();
+                    String emailString = edEmailLog.getEditText().getText().toString().trim();
+                    String senhaString = edSenhaLog.getEditText().getText().toString().trim();
 
                     authReturn = new VerificadorLogin().execute(emailString, senhaString).get();
 

@@ -17,239 +17,236 @@
         android:background="@color/corBranco">
 
 
-         <androidx.constraintlayout.widget.ConstraintLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-             <androidx.appcompat.widget.Toolbar
-              android:id="@+id/toolbar2"
-              android:layout_width="match_parent"
-              android:layout_height="95dp"
-              android:background="?attr/colorPrimary"
-              android:minHeight="?attr/actionBarSize"
-              android:theme="?attr/actionBarTheme"
-              app:layout_constraintTop_toTopOf="parent"
-              tools:ignore="MissingConstraints" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
             <TextView
-              android:id="@+id/tx_nome_sala"
-              android:layout_width="match_parent"
-              android:layout_height="30dp"
-              android:layout_margin="8dp"
-              android:text="Nome:"
-              android:textAlignment="center"
-              android:textColor="#ffffff"
-              android:textSize="25dp"
-              android:textStyle="normal"
-              app:layout_constraintTop_toTopOf="@id/toolbar2"
-              app:layout_constraintVertical_bias="0.0"
-              tools:ignore="MissingConstraints,NotSibling"
-              tools:layout_editor_absoluteX="0dp">
-            </TextView>
+                android:id="@+id/tx_nome_sala"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
+                android:text="Nome:"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="normal"
+                app:layout_constraintTop_toTopOf="@id/toolbar2"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints,NotSibling"
+                tools:layout_editor_absoluteX="0dp"></TextView>
 
-             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                 android:id="@+id/fab_reserva"
-                 android:layout_width="382dp"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="top"
-                 android:layout_margin="16dp"
-                 android:backgroundTint="@color/colorPrimary"
-                 android:clickable="true"
-                 android:src="@drawable/icon_add"
-                 app:layout_constraintBottom_toBottomOf="@id/imageView2"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintTop_toTopOf="@id/imageView2"
-                 app:layout_constraintVertical_bias="0.74"
-                 tools:ignore="MissingConstraints" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_reserva"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                android:src="@drawable/icon_add"
+                app:layout_constraintBottom_toBottomOf="@id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imageView2"
+                app:layout_constraintVertical_bias="0.74" />
 
-             <ImageView
-                 android:id="@+id/imageView2"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 app:srcCompat="@drawable/sala"
-                 tools:ignore="MissingConstraints" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/sala"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
 
-             <ImageButton
-                 android:id="@+id/btn_infor"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="70dp"
-                 android:layout_marginEnd="1dp"
-                 android:layout_marginBottom="20dp"
-                 android:background="@null"
-                 android:foregroundGravity="left"
-                 app:layout_constraintBottom_toBottomOf="@id/tx_caracteristicas_sala"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.76"
-                 app:layout_constraintStart_toStartOf="@+id/tx_caracteristicas_sala"
+            <ImageButton
+                android:id="@+id/btn_infor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@null"
+                android:foregroundGravity="left"
+                app:layout_constraintBottom_toBottomOf="@id/tx_caracteristicas_sala"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.76"
+                app:layout_constraintStart_toStartOf="@+id/tx_caracteristicas_sala"
 
-                 app:srcCompat="@drawable/icon_btn_baixo"
-                 tools:ignore="MissingConstraints" />
-
-
-             <TextView
-                 android:id="@+id/tx_caracteristicas_sala"
-                 android:layout_width="250dp"
-                 android:layout_height="50dp"
-                 android:layout_margin="8dp"
-                 android:layout_marginStart="80dp"
-                 android:layout_marginEnd="100dp"
-                 android:text=" Caracteristicas da Sala "
-                 android:textAlignment="center"
-                 android:textColor="@color/corBack"
-                 android:textSize="23dp"
-                 android:textStyle="bold"
-                 app:layout_constraintBottom_toBottomOf="@id/imageView2"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.25"
-                 app:layout_constraintStart_toStartOf="parent"
-                 tools:ignore="MissingConstraints"></TextView>
-
-   <androidx.cardview.widget.CardView
-        android:id="@+id/card_reserva"
-        android:layout_width="390dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@null"
-       app:cardElevation="0dp"
-       app:cardMaxElevation="0dp"
-       app:cardCornerRadius="1dp"
-       app:cardUseCompatPadding="true"
-       app:cardPreventCornerOverlap="false"
-        app:layout_constraintTop_toBottomOf="@id/tx_caracteristicas_sala"
-        tools:ignore="MissingConstraints">
-
-   <ScrollView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content">
-
-     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutExpand"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/borda_sombreada"
-         app:layout_constraintTop_toBottomOf="@id/tx_caracteristicas_sala"
-        android:visibility="visible">
+                app:srcCompat="@drawable/icon_btn_baixo"
+                tools:ignore="MissingConstraints" />
 
 
+            <TextView
+                android:id="@+id/tx_caracteristicas_sala"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="100dp"
+                android:text=" Caracteristicas da Sala "
+                android:textAlignment="center"
+                android:textColor="@color/corBack"
+                android:textSize="23dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"></TextView>
 
-        <TextView
-            android:id="@+id/tx_quantPessoas_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Quantidade de pessoas sentadas:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_reserva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@null"
+                app:cardCornerRadius="1dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@id/tx_caracteristicas_sala"
+                tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/tx_possuiMidia_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Quantidade de midias da sala:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/tx_quantPessoas_sala"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tx_refrigeracao_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Refrigeracao sala:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/tx_possuiMidia_sala"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
-
-        <TextView
-            android:id="@+id/tx_area_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Area da sala:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/tx_refrigeracao_sala"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
-
-        <TextView
-            android:id="@+id/tx_local_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Localizacao da sala:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/tx_area_sala"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
-
-        <TextView
-            android:id="@+id/tx_latitude_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Latitude da sala:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/tx_local_sala"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
-
-        <TextView
-            android:id="@+id/tx_longitude_sala"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="8dp"
-            android:text=" Lonitude da sala:"
-            android:textAlignment="textStart"
-            android:textColor="@color/corBack"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/tx_latitude_sala"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></TextView>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutExpand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:visibility="visible"
+                        app:layout_constraintTop_toBottomOf="@id/tx_caracteristicas_sala">
 
 
+                        <TextView
+                            android:id="@+id/tx_quantPessoas_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Quantidade de pessoas sentadas:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/tx_possuiMidia_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Quantidade de midias da sala:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintTop_toBottomOf="@id/tx_quantPessoas_sala"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/tx_refrigeracao_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Refrigeracao sala:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintTop_toBottomOf="@id/tx_possuiMidia_sala"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/tx_area_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Area da sala:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintTop_toBottomOf="@id/tx_refrigeracao_sala"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/tx_local_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Localizacao da sala:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintTop_toBottomOf="@id/tx_area_sala"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/tx_latitude_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Latitude da sala:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintTop_toBottomOf="@id/tx_local_sala"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
+
+                        <TextView
+                            android:id="@+id/tx_longitude_sala"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"
+                            android:text=" Lonitude da sala:"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/corTextoClaro"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintTop_toBottomOf="@id/tx_latitude_sala"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="0dp"></TextView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-   </ScrollView>
+                </ScrollView>
 
-</androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-   <ListView
+        <ListView
             android:id="@+id/listViewReservas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

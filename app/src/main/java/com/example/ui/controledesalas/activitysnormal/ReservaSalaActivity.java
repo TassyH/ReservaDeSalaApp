@@ -63,12 +63,13 @@ public class ReservaSalaActivity extends AppCompatActivity {
         TextView tx_refrigeracao = findViewById(R.id.tx_refrigeracao_sala);
         TextView tx_area_sala = findViewById(R.id.tx_area_sala);
         TextView tx_midia = findViewById(R.id.tx_possuiMidia_sala);
+        TextView tx_carqcteristicas = findViewById(R.id.tx_caracteristicas_sala);
         final ConstraintLayout expandir = findViewById(R.id.layoutExpand);
         final CardView cardView = findViewById(R.id.card_reserva);
 
         SharedPreferences preferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
-        btn_infor.setOnClickListener(new View.OnClickListener() {
+       btn_infor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (expandir.getVisibility() == View.GONE) {
@@ -154,7 +155,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
                 System.out.println("reserva: " + verifReservas);
                 for (int i = 0; i < reservaJson.length(); i++) {
                     JSONObject reservaJsonObjeto = reservaJson.getJSONObject(i);
-
+                    reservas.clear();
                     int id = reservaJsonObjeto.getInt("id");
                     int idSala = reservaJsonObjeto.getInt("idSala");
                     int idUsuario = reservaJsonObjeto.getInt("idUsuario");

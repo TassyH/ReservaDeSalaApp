@@ -18,6 +18,8 @@ import com.example.ui.controledesalas.Modal.Organizacao;
 import com.example.ui.controledesalas.R;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorCadastro;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorDominio;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +34,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
 
-    EditText edNome, edEmail, edSenha;
+    TextInputLayout edNome, edEmail, edSenha;
     private  Spinner spOrganizacao;
     Button btnCadastrar, btnCadastrar2;
     private  List<Organizacao> lista= new ArrayList<>();
@@ -48,12 +50,12 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         // inicializacaoDosCampos();
         setContentView(R.layout.activity_cadastro_usuario);
 
-        btnCadastrar = (Button) findViewById(R.id.btn_cadastrar);
-        btnCadastrar2 = (Button) findViewById(R.id.btn_cadastro2);
-        edNome = (EditText) findViewById(R.id.ed_cadastro_nome);
-        edEmail = (EditText) findViewById(R.id.ed_cadastro_email);
-        edSenha = (EditText) findViewById(R.id.ed_cadastro_senha);
-        spOrganizacao = (Spinner)findViewById(R.id.sp_organizacao);
+        btnCadastrar =  findViewById(R.id.btn_cadastrar);
+        btnCadastrar2 = findViewById(R.id.btn_cadastro2);
+        edNome =  findViewById(R.id.ed_cadastro_nome);
+        edEmail =  findViewById(R.id.ed_cadastro_email);
+        edSenha = findViewById(R.id.ed_cadastro_senha);
+        spOrganizacao = findViewById(R.id.sp_organizacao);
 
 
         spOrganizacao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -68,18 +70,14 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             }
         });
 
-
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                String nomeString = edNome.getText().toString().trim();
-                String emailString = edEmail.getText().toString().trim();
-                String senhaString = edSenha.getText().toString().trim();
-
+                String nomeString = edNome.getEditText().getText().toString().trim();
+                String emailString = edEmail.getEditText().getText().toString().trim();
+                String senhaString = edSenha.getEditText().getText().toString().trim();
                 JSONObject usuarioJson = new JSONObject();
-
 
                 try {
                     usuarioJson.put("email", emailString);
@@ -87,20 +85,27 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuarioJson.put("senha", senhaString);
                     usuarioJson.put("idOrganizacao", orgSelect);
 
-                    if (emailString.isEmpty() || nomeString.isEmpty()|| senhaString.isEmpty()){
-                         
-                    }else{
-                        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginUsuarioActivity.class);
-                        startActivity(intent);
-                    }
+                      if(nomeString.isEmpty()){
+                          edNome.setError("Digite seu nome, bro");
+                      }else if(emailString.isEmpty()){
+                          edEmail.setErrorEnabled(false);
+                          edEmail.setError("Digite seu email, bro");
+                      }else if(senhaString.isEmpty()) {
+                          edEmail.setErrorEnabled(false);
+                          edSenha.setError("Digite uma senha, bro");
+                      }else {
+                          edEmail.setErrorEnabled(false);
+                          edNome.setErrorEnabled(false);
+                          edSenha.setErrorEnabled(false);
 
+                          String userCod = (Base64.encodeToString(usuarioJson.toString().getBytes("UTF-8"), Base64.NO_WRAP));
+                          System.out.println(usuarioJson.toString());
 
+                          exibirMensagem(new VerificadorCadastro().execute(userCod).get());
+                          Intent intent = new Intent(CadastroUsuarioActivity.this, LoginUsuarioActivity.class);
+                          startActivity(intent);
 
-                    String novoUsuarioDecode;
-                    String userCod = new String(Base64.encodeToString(usuarioJson.toString().getBytes("UTF-8"), Base64.NO_WRAP));
-                    System.out.println(usuarioJson.toString());
-
-                    exibirMensagem(new VerificadorCadastro().execute(userCod).get());
+                      }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -114,11 +119,11 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-        edEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        edEmail.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus){
-                    String emailAfterTextChange = edEmail.getText().toString();
+                    String emailAfterTextChange = edEmail.getEditText().getText().toString();
                     if(emailAfterTextChange.contains("@")){
                         String [] emailCompleto = emailAfterTextChange.split("@");
                         if(emailAfterTextChange.length()>0){

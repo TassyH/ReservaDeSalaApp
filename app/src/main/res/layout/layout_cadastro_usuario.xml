@@ -16,92 +16,78 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/icon_wise"/>
 
-    <EditText
-        android:id="@+id/ed_cadastro_nome"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/iv_user"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:drawableLeft="@drawable/ic_action_pessoa"
-        android:textColorHint="@color/corBack"
-        android:textColor="@color/corBack">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_cadastro_nome"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="Nome"
 
-        <requestFocus>
+            android:layout_below="@+id/iv_user"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
 
-        </requestFocus>
-    </EditText>
-
-    <TextView
-        android:id="@+id/tv_cadastro_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_user"
-        android:layout_alignStart="@+id/ed_cadastro_nome"
-        android:layout_alignLeft="@+id/ed_cadastro_nome"
-        android:layout_marginTop="20dp"
-        android:text="Nome"
-        android:textColor="@color/corBack"
-        android:textSize="16sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <EditText
-        android:id="@+id/ed_cadastro_email"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/ed_cadastro_nome"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:drawableLeft="@drawable/icon_email"
-        android:textColorHint="@color/corBack"
-        android:textColor="@color/corBack">
-    </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_cadastro_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="Email"
+
+            android:layout_below="@+id/ed_cadastro_nome"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/tv_cadastro_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_cadastro_nome"
-        android:layout_alignStart="@+id/ed_cadastro_nome"
-        android:layout_alignLeft="@+id/ed_cadastro_nome"
-        android:layout_marginTop="20dp"
-        android:text="Email"
-        android:textColor="@color/corBack"
-        android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/ed_cadastro_senha"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/ed_cadastro_email"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:drawableLeft="@drawable/icon_senhaa"
-        android:textColorHint="@color/corBack"
-        android:textColor="@color/corBack" >
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_cadastro_senha"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="Senha"
 
-    </EditText>
+            android:layout_below="@+id/ed_cadastro_email"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
 
-    <TextView
-        android:id="@+id/tv_cadastro_senha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_cadastro_email"
-        android:layout_alignStart="@+id/ed_cadastro_email"
-        android:layout_alignLeft="@+id/ed_cadastro_email"
-        android:layout_marginTop="20dp"
-        android:text="Senha"
-        android:textColor="@color/corBack"
-        android:textSize="16sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
+
+
+        <Spinner
         android:id="@+id/sp_organizacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +96,7 @@
         android:layout_alignLeft="@+id/ed_cadastro_senha"
         android:visibility="invisible">
 
-    </Spinner>
+        </Spinner>
 
     <Button
         android:id="@+id/btn_cadastrar"

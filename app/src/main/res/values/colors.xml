@@ -7,4 +7,5 @@
 
     <color name="corBack">#000000</color>
     <color name="corBranco">#ffffff</color>
+    <color name="corTextoClaro">#808080</color>
 </resources>
