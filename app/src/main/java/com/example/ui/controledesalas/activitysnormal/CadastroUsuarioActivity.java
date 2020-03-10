@@ -35,25 +35,25 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
 
     TextInputLayout edNome, edEmail, edSenha;
-    private  Spinner spOrganizacao;
+    private Spinner spOrganizacao;
     Button btnCadastrar, btnCadastrar2;
-    private  List<Organizacao> lista= new ArrayList<>();
+    private List<Organizacao> lista = new ArrayList<>();
     List<String> listaDeStrings = new ArrayList<>();
     private int orgSelect;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
 
 
-
         // inicializacaoDosCampos();
         setContentView(R.layout.activity_cadastro_usuario);
 
-        btnCadastrar =  findViewById(R.id.btn_cadastrar);
+        btnCadastrar = findViewById(R.id.btn_cadastrar);
         btnCadastrar2 = findViewById(R.id.btn_cadastro2);
-        edNome =  findViewById(R.id.ed_cadastro_nome);
-        edEmail =  findViewById(R.id.ed_cadastro_email);
+        edNome = findViewById(R.id.ed_cadastro_nome);
+        edEmail = findViewById(R.id.ed_cadastro_email);
         edSenha = findViewById(R.id.ed_cadastro_senha);
         spOrganizacao = findViewById(R.id.sp_organizacao);
 
@@ -61,7 +61,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         spOrganizacao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                  orgSelect = lista.get(position).getId();
+                orgSelect = lista.get(position).getId();
             }
 
             @Override
@@ -85,33 +85,33 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuarioJson.put("senha", senhaString);
                     usuarioJson.put("idOrganizacao", orgSelect);
 
-                      if(nomeString.isEmpty()){
-                          edNome.setError("Digite seu nome, bro");
-                      }else if(emailString.isEmpty()){
-                          edEmail.setErrorEnabled(false);
-                          edEmail.setError("Digite seu email, bro");
-                      }else if(senhaString.isEmpty()) {
-                          edEmail.setErrorEnabled(false);
-                          edSenha.setError("Digite uma senha, bro");
-                      }else {
-                          edEmail.setErrorEnabled(false);
-                          edNome.setErrorEnabled(false);
-                          edSenha.setErrorEnabled(false);
+                    if (nomeString.isEmpty()) {
+                        edNome.setError("Digite seu nome, bro");
+                    } else if (emailString.isEmpty()) {
+                        edEmail.setErrorEnabled(false);
+                        edEmail.setError("Digite seu email, bro");
+                    } else if (senhaString.isEmpty()) {
+                        edEmail.setErrorEnabled(false);
+                        edSenha.setError("Digite uma senha, bro");
+                    } else {
+                        edEmail.setErrorEnabled(false);
+                        edNome.setErrorEnabled(false);
+                        edSenha.setErrorEnabled(false);
 
-                          String userCod = (Base64.encodeToString(usuarioJson.toString().getBytes("UTF-8"), Base64.NO_WRAP));
-                          System.out.println(usuarioJson.toString());
+                        String userCod = (Base64.encodeToString(usuarioJson.toString().getBytes("UTF-8"), Base64.NO_WRAP));
+                        System.out.println(usuarioJson.toString());
 
-                          exibirMensagem(new VerificadorCadastro().execute(userCod).get());
-                          Intent intent = new Intent(CadastroUsuarioActivity.this, LoginUsuarioActivity.class);
-                          startActivity(intent);
+                        exibirMensagem(new VerificadorCadastro().execute(userCod).get());
+                        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginUsuarioActivity.class);
+                        startActivity(intent);
 
-                      }
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
-                } catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
@@ -122,11 +122,11 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         edEmail.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus){
+                if (!hasFocus) {
                     String emailAfterTextChange = edEmail.getEditText().getText().toString();
-                    if(emailAfterTextChange.contains("@")){
-                        String [] emailCompleto = emailAfterTextChange.split("@");
-                        if(emailAfterTextChange.length()>0){
+                    if (emailAfterTextChange.contains("@")) {
+                        String[] emailCompleto = emailAfterTextChange.split("@");
+                        if (emailAfterTextChange.length() > 0) {
                             String dominio = emailCompleto[1];
                             if (dominio.contains(".")) {
                                 try {
@@ -155,10 +155,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
 
                                                 String tipoOrganizacaoStr = "";
-                                                if(novaOrganizacao.getTipoOrganizacao().equals("M")){
+                                                if (novaOrganizacao.getTipoOrganizacao().equals("M")) {
                                                     tipoOrganizacaoStr = "Matriz";
-                                                }
-                                                else {
+                                                } else {
                                                     tipoOrganizacaoStr = "Filial";
                                                 }
 
@@ -179,10 +178,10 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                                         //nada
                                     }
 
-                                   } catch (ExecutionException e) {
-                                       e.printStackTrace();
-                                   } catch (InterruptedException e) {
-                                      e.printStackTrace();
+                                } catch (ExecutionException e) {
+                                    e.printStackTrace();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -196,12 +195,10 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
-    public void exibirMensagem(String mensagem)
-    {
+    public void exibirMensagem(String mensagem) {
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
 

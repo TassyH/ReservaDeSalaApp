@@ -44,35 +44,35 @@ public class ContaUsuarioFragment extends Fragment {
         SharedPreferences preferences = getContext().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
         String idOrg = preferences.getString("userIdOrganizacao", null);
 
-            String nomeUser = preferences.getString("userName", null);
-            String emailUser = preferences.getString("userEmail", null);
-            String nomeOrganizacao = preferences.getString("userNomeEmpresa", null);
+        String nomeUser = preferences.getString("userName", null);
+        String emailUser = preferences.getString("userEmail", null);
+        String nomeOrganizacao = preferences.getString("userNomeEmpresa", null);
 
-            user_nome.setText("Nome: "+nomeUser);
-            user_email.setText("Email: "+emailUser);
-            user_org.setText("Sua Empresa: "+nomeOrganizacao);
+        user_nome.setText("Nome: " + nomeUser);
+        user_email.setText("Email: " + emailUser);
+        user_org.setText("Sua Empresa: " + nomeOrganizacao);
 
 
-                btnSair.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        SharedPreferences pref = getContext().getSharedPreferences("USER_LOGIN", 0);
-                        SharedPreferences.Editor editor = pref.edit();
-                        editor.remove("userEmail");
-                        editor.remove("userName");
-                        editor.remove("userId");
-                        editor.remove("userIdOrganizacao");
-                        editor.remove("userNomeEmpresa");
-                        editor.remove("userTipoEmpresa");
-                        editor.commit();
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pref = getContext().getSharedPreferences("USER_LOGIN", 0);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.remove("userEmail");
+                editor.remove("userName");
+                editor.remove("userId");
+                editor.remove("userIdOrganizacao");
+                editor.remove("userNomeEmpresa");
+                editor.remove("userTipoEmpresa");
+                editor.commit();
 
-                        Intent intent = new Intent(view.getContext(), LoginUsuarioActivity.class);
-                        startActivity(intent);
-                    }
-
-                });
-                return view;
+                Intent intent = new Intent(view.getContext(), LoginUsuarioActivity.class);
+                startActivity(intent);
             }
+
+        });
+        return view;
+    }
 
 }
 

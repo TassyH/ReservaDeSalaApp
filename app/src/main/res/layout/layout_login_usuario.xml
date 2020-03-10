@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:background="@color/corBranco"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/corBranco">
 
 
     <ImageView
@@ -12,8 +11,8 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:padding="8dp"
         android:layout_centerHorizontal="true"
+        android:padding="8dp"
         app:srcCompat="@drawable/icon_wise" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -21,11 +20,11 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:hint="Email"
-
         android:layout_below="@+id/iv_user"
+        android:layout_centerHorizontal="true"
+
         android:layout_marginBottom="8dp"
+        android:hint="Email"
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
@@ -33,11 +32,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:layout_height="wrap_content" />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,11 +43,11 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:hint="Senha"
-
         android:layout_below="@+id/ed_login_email"
+        android:layout_centerHorizontal="true"
+
         android:layout_marginBottom="8dp"
+        android:hint="Senha"
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
@@ -57,26 +55,23 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:layout_height="wrap_content" />
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/corBranco"
-        android:textSize="20sp"
-        android:background="@drawable/botao_radius"
         android:layout_below="@+id/ed_login_senha"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:background="@drawable/botao_radius"
         android:text="Login"
-        />
+        android:textColor="@color/corBranco"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_cadastro2"
@@ -85,9 +80,9 @@
         android:layout_below="@+id/btn_login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
         android:background="@null"
-        android:text="Cadastre-me" />
+        android:text="Cadastre-me"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
 
 </RelativeLayout>

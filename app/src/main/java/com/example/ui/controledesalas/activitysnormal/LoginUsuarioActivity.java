@@ -74,49 +74,49 @@ public class LoginUsuarioActivity extends AppCompatActivity {
 
                     //////////////////////////////////////////////////////////////////////////////////////////
 
-                       if (authReturn.length() > 0) {
-                           try {
-                                   JSONObject usuarioJSON = new JSONObject(authReturn);
+                    if (authReturn.length() > 0) {
+                        try {
+                            JSONObject usuarioJSON = new JSONObject(authReturn);
 
-                                   if (usuarioJSON.has("email") && usuarioJSON.has("id") && usuarioJSON.has("nome") && usuarioJSON.has("idOrganizacao")) {
-                                       int id = usuarioJSON.getInt("id");
-                                       String nome = usuarioJSON.getString("nome");
-                                       String email = usuarioJSON.getString("email");
+                            if (usuarioJSON.has("email") && usuarioJSON.has("id") && usuarioJSON.has("nome") && usuarioJSON.has("idOrganizacao")) {
+                                int id = usuarioJSON.getInt("id");
+                                String nome = usuarioJSON.getString("nome");
+                                String email = usuarioJSON.getString("email");
 
-                                       JSONObject organizacao = usuarioJSON.getJSONObject("idOrganizacao");
-                                       String nomeOrganizacao = organizacao.getString("nome");
-                                       String tipoOrganizacao = organizacao.getString("tipoOrganizacao");
-                                       int idOrganizacao = organizacao.getInt("id");
+                                JSONObject organizacao = usuarioJSON.getJSONObject("idOrganizacao");
+                                String nomeOrganizacao = organizacao.getString("nome");
+                                String tipoOrganizacao = organizacao.getString("tipoOrganizacao");
+                                int idOrganizacao = organizacao.getInt("id");
 
-                                       preferences = getSharedPreferences("USER_LOGIN", 0);
-                                       SharedPreferences.Editor editor = preferences.edit();
-                                       editor.putString("userEmail", email);
-                                       editor.putString("userName", nome);
-                                       editor.putString("userId", Integer.toString(id));
-                                       editor.putString("userIdOrganizacao", Integer.toString(idOrganizacao));
-                                       editor.putString("userNomeEmpresa", nomeOrganizacao);
-                                       editor.putString("userTipoEmpresa", tipoOrganizacao);
-                                       editor.commit();
+                                preferences = getSharedPreferences("USER_LOGIN", 0);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("userEmail", email);
+                                editor.putString("userName", nome);
+                                editor.putString("userId", Integer.toString(id));
+                                editor.putString("userIdOrganizacao", Integer.toString(idOrganizacao));
+                                editor.putString("userNomeEmpresa", nomeOrganizacao);
+                                editor.putString("userTipoEmpresa", tipoOrganizacao);
+                                editor.commit();
 
-                                   }
-                                   System.out.println(preferences.getString("userEmail", null));
-                                   System.out.println(preferences.getString("userName", null));
-                                   System.out.println(preferences.getString("userId", null));
-                                   System.out.println(preferences.getString("userIdOrganizacao", null));
-                                   System.out.println(preferences.getString("userNomeEmpresa", null));
-                                   System.out.println(preferences.getString("userTipoEmpresa", null));
-                           } catch (Exception e) {
-
-                               Toast.makeText(getApplicationContext(), " inválido", Toast.LENGTH_SHORT).show();
-                               e.printStackTrace();
-                           }
-
-                            Intent intent = new Intent(LoginUsuarioActivity.this, MainActivity.class);
-                            startActivity(intent);
-                          } else {
-
-                            Toast.makeText(getApplicationContext(), "os dados inseridos nao sao validos, baby", Toast.LENGTH_SHORT).show();
                             }
+                            System.out.println(preferences.getString("userEmail", null));
+                            System.out.println(preferences.getString("userName", null));
+                            System.out.println(preferences.getString("userId", null));
+                            System.out.println(preferences.getString("userIdOrganizacao", null));
+                            System.out.println(preferences.getString("userNomeEmpresa", null));
+                            System.out.println(preferences.getString("userTipoEmpresa", null));
+                        } catch (Exception e) {
+
+                            Toast.makeText(getApplicationContext(), " inválido", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+
+                        Intent intent = new Intent(LoginUsuarioActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+
+                        Toast.makeText(getApplicationContext(), "os dados inseridos nao sao validos, baby", Toast.LENGTH_SHORT).show();
+                    }
 
 
                 } catch (Exception e) {

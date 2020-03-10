@@ -71,9 +71,8 @@ public class ListaSalasFragment extends Fragment {
                     JSONObject salaJsonObjeto = salasJson.getJSONObject(i);
                     if (salaJsonObjeto.has("nome") && salaJsonObjeto.has("localizacao") && salaJsonObjeto.has("id")) {
                         String nome = salaJsonObjeto.getString("nome");
-                        String local  =  salaJsonObjeto.getString("localizacao");
+                        String local = salaJsonObjeto.getString("localizacao");
                         int idSala = salaJsonObjeto.getInt("id");
-
 
 
                         Sala novaSala = new Sala();

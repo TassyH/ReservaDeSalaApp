@@ -40,7 +40,7 @@ import java.util.concurrent.ExecutionException;
 
 public class ReservaSalaActivity extends AppCompatActivity {
     List<Sala> salas = new ArrayList<>();
-    ListaReservasAdapter adapter;
+    private ListaReservasAdapter adapter;
     List<Reserva> reservas = new ArrayList<>();
 
     public static final String mypreference = "USER_LOGIN";
@@ -53,6 +53,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
         inicializacaoDosComponentes();
         exibirDadosReserva();
         cadastrarReserva();
+        reservas.clear();
 
         final FloatingActionButton btn_infor = findViewById(R.id.fab_infor);
         TextView tx_nome = findViewById(R.id.tx_nome_sala);
@@ -69,7 +70,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
-       btn_infor.setOnClickListener(new View.OnClickListener() {
+        btn_infor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (expandir.getVisibility() == View.GONE) {
@@ -81,7 +82,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
                 } else {
                     TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
                     expandir.setVisibility(View.GONE);
-                   // btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
+                    // btn_infor.setBackgroundResource(R.drawable.icon_btn_baixo);
 
                 }
 
@@ -129,8 +130,8 @@ public class ReservaSalaActivity extends AppCompatActivity {
                     tx_area_sala.setText("Area da sala: " + area);
                     tx_latitude.setText("Latitude: " + latitude);
                     tx_longitude.setText("Longitude: " + longitude);
-                    tx_midia.setText("possui midia : "+midia);
-                    tx_refrigeracao.setText("refrigeracao: "+refrigeracao);
+                    tx_midia.setText("possui midia : " + midia);
+                    tx_refrigeracao.setText("refrigeracao: " + refrigeracao);
 
 
                 }
@@ -146,7 +147,6 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
         try {
             String userid = preferences.getString("idSala", null);
-
             String verifReservas = "";
             verifReservas = new VerificadorReserva().execute(userid).get();
 
@@ -213,10 +213,6 @@ public class ReservaSalaActivity extends AppCompatActivity {
     }
 
     private void excluirReserva(int id) {
-        SharedPreferences preferences = getSharedPreferences("USER_LOGIN", 0);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("reservaId", Integer.toString(id));
-        editor.commit();
 
         ListView listaDeReservas = findViewById(R.id.listViewReservas);
         listaDeReservas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -228,20 +224,22 @@ public class ReservaSalaActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 SharedPreferences preferences = getSharedPreferences("USER_LOGIN", 0);
-                                 String verifDeleteReserva = "";
-                                  String user  =  preferences.getString("userId", null);
-                                 // int idUsuarioDaReservaEfetuada = reservas.get(position).getId_usuario();
-                                  int idReserva = reservas.get(position).getId();
+                                String verifDeleteReserva = "";
+                                String user = preferences.getString("userId", null);
+                               // int idUsuario = reservas.get(position).getId_usuario();
+                                int idReserva = reservas.get(position).getId();
 
-                                   System.out.println("id da reserva pra excluir reserva: " + idReserva);
-                                   System.out.println("id user brabo : " + user);
+                                System.out.println("id da reserva pra excluir reserva: " + idReserva);
+                                System.out.println("id user brabo : " + user);
 
-                                if (user ==(preferences.getString("userId", null))) {
+                                if (user == (preferences.getString("userId", null))) {
                                     try {
                                         verifDeleteReserva = new VerificadorApagarReserva().execute(String.valueOf(idReserva)).get();
-                                        System.out.println("servidor delete: "+ verifDeleteReserva);
+                                        System.out.println("servidor delete: " + verifDeleteReserva);
                                         if (verifDeleteReserva.equals("A reserva foi cancelada com sucesso")) {
                                             reservas.remove(position);
+                                            reservas.clear();
+                                            adapter.notifyDataSetChanged();
                                             Toast.makeText(ReservaSalaActivity.this, "Reserva excluida com sucesso", Toast.LENGTH_SHORT).show();
                                         } else {
                                             Toast.makeText(ReservaSalaActivity.this, "Erro ao exluir reserva", Toast.LENGTH_SHORT).show();
@@ -263,14 +261,12 @@ public class ReservaSalaActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     private void exibirDadosReserva() {
     }
 
-    private void inicializacaoDosComponentes(){
+    private void inicializacaoDosComponentes() {
 
     }
 }

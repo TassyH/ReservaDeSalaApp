@@ -40,7 +40,7 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
     TextView textoData, edNomeLocador;
     EditText edDrescricaoLocador;
     private long dateInicio, dateFim, dateLong;
-    private  TextView horaInicio, horaFim;
+    private TextView horaInicio, horaFim;
     private ListaReservasAdapter adapter;
     private SharedPreferences preferences;
     private Context context = this;
@@ -123,13 +123,11 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
         });
 
 
-
-
         ////////////////////////////data e hora //////////////////////////////////////
         cardData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                datePickerCalendar.show(getSupportFragmentManager(),"Date Picker");
+                datePickerCalendar.show(getSupportFragmentManager(), "Date Picker");
 
             }
         });
@@ -191,18 +189,17 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
         horaFormatada = String.valueOf(hourOfDay);
         minutoFormatado = String.valueOf(minute);
 
-        if(hourOfDay<10){
-            horaFormatada = "0"+hourOfDay;
+        if (hourOfDay < 10) {
+            horaFormatada = "0" + hourOfDay;
         }
-        if(minute<10){
-            minutoFormatado = "0"+minute;
+        if (minute < 10) {
+            minutoFormatado = "0" + minute;
         }
 
         if (horaInicial) {
             String hora1 = horaFormatada + ":" + minutoFormatado;
             horaInicio.setText(hora1);
-        }
-        else if (!horaInicial) {
+        } else if (!horaInicial) {
             String hora2 = horaFormatada + ":" + minutoFormatado;
             horaFim.setText(hora2);
         }
@@ -210,41 +207,40 @@ public class CadastroReservaActivity extends AppCompatActivity implements TimePi
 
     }
 
-      private void dateTimeFormat(TextView horaInicio, TextView horaFim) {
-        SimpleDateFormat dateTimeFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-          textoData = (TextView) findViewById(R.id.text_print_data);
-          String dataString = textoData.getText().toString();//ok
-          String horaIgetString = horaInicio.getText().toString();//ok
-          String horaFgetString = horaFim.getText().toString();//ok
+    private void dateTimeFormat(TextView horaInicio, TextView horaFim) {
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        textoData = (TextView) findViewById(R.id.text_print_data);
+        String dataString = textoData.getText().toString();//ok
+        String horaIgetString = horaInicio.getText().toString();//ok
+        String horaFgetString = horaFim.getText().toString();//ok
 
-          String dateTimeInicial = dataString + " "+horaIgetString+":00".trim();
-          String dateTimeFinal = dataString + " "+horaFgetString+":00".trim();
+        String dateTimeInicial = dataString + " " + horaIgetString + ":00".trim();
+        String dateTimeFinal = dataString + " " + horaFgetString + ":00".trim();
 
-          System.out.println("datetime inicial "+dateTimeInicial);
-          System.out.println("datetime final "+dateTimeFinal);
-
-
-
-          try {
-
-              Date dateTimeInicioParse = dateTimeFormat.parse(dateTimeInicial);
-              Date dateTimeFimParse= dateTimeFormat.parse(dateTimeFinal);
-              dateTimeInicialLong = dateTimeInicioParse.getTime();
-              dateTimeFinalLong = dateTimeFimParse.getTime();
-
-              System.out.println("data long"+ dateTimeInicialLong);
-              System.out.println("hora long"+ dateTimeInicialLong);
-
-              SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-              SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
+        System.out.println("datetime inicial " + dateTimeInicial);
+        System.out.println("datetime final " + dateTimeFinal);
 
 
-          } catch (ParseException e) {
-              e.printStackTrace();
-          }
-      }
+        try {
 
+            Date dateTimeInicioParse = dateTimeFormat.parse(dateTimeInicial);
+            Date dateTimeFimParse = dateTimeFormat.parse(dateTimeFinal);
+            dateTimeInicialLong = dateTimeInicioParse.getTime();
+            dateTimeFinalLong = dateTimeFimParse.getTime();
+
+            System.out.println("data long" + dateTimeInicialLong);
+            System.out.println("hora long" + dateTimeInicialLong);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
+
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
+
+}
 
 
 

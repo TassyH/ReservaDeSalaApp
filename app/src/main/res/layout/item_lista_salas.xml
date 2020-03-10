@@ -31,14 +31,12 @@
                 android:layout_height="0dp"
                 android:layout_margin="8dp"
                 android:padding="8dp"
+                android:text="teste"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintVertical_bias="1.0"
-                tools:ignore="MissingConstraints"
-                android:text="teste"
-               />
-
+                tools:ignore="MissingConstraints" />
 
 
             <TextView
@@ -46,35 +44,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_below="@id/item_nome_sala"
+                android:layout_margin="8dp"
                 android:padding="8dp"
+                android:text="teste"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:layout_margin="8dp"
                 app:layout_constraintTop_toBottomOf="@id/item_nome_sala"
                 tools:ignore="MissingConstraints"
-                android:text="teste"
                 tools:layout_editor_absoluteX="0dp" />
-<!--
-           <ImageButton
-                android:id="@+id/btn_infor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@null"
-                android:layout_below="@id/item_local_sala"
-                android:foregroundGravity="left"
-                app:layout_constraintBottom_toBottomOf="@id/tx_caracteristicas_sala"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.74"
-                app:layout_constraintStart_toStartOf="@+id/tx_caracteristicas_sala"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-                app:layout_constraintVertical_bias="0.75"
-                app:srcCompat="@drawable/icon_btn_baixo"
-                tools:ignore="MissingConstraints" />-->
+            <!--
+                       <ImageButton
+                            android:id="@+id/btn_infor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="72dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@null"
+                            android:layout_below="@id/item_local_sala"
+                            android:foregroundGravity="left"
+                            app:layout_constraintBottom_toBottomOf="@id/tx_caracteristicas_sala"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.74"
+                            app:layout_constraintStart_toStartOf="@+id/tx_caracteristicas_sala"
+                            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+                            app:layout_constraintVertical_bias="0.75"
+                            app:srcCompat="@drawable/icon_btn_baixo"
+                            tools:ignore="MissingConstraints" />-->
 
 
             <!--   <androidx.cardview.widget.CardView

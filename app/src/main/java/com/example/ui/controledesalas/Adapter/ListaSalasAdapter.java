@@ -17,7 +17,7 @@ public class ListaSalasAdapter extends BaseAdapter {
     private final List<Sala> salas;
     private Context context;
 
-    public ListaSalasAdapter(List<Sala> salas, Context context){
+    public ListaSalasAdapter(List<Sala> salas, Context context) {
         this.salas = salas;
         this.context = context;
     }

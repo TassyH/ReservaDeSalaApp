@@ -69,7 +69,6 @@ public class ListaReservasFragment extends Fragment {
                     String nomeOrganizador = reservaJsonObjeto.getString("nomeOrganizador");
 
 
-
                     Reserva novaReserva = new Reserva();
                     novaReserva.setNomeOrganizador(nomeOrganizador);
                     novaReserva.setDescricao(descricao);
@@ -86,19 +85,17 @@ public class ListaReservasFragment extends Fragment {
 
             }
 
-        } catch(InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch(ExecutionException e){
+        } catch (ExecutionException e) {
             e.printStackTrace();
-        } catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         return view;
-        }
-
+    }
 
 
 }

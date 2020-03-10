@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class VerificadorDominio extends AsyncTask<String, Void, String> {//osganizacao servece
 
-    String urlWS = "http://172.30.248.158:8080/ReservaDeSala/rest/organizacao/organizacoesByDominio";
+    String urlWS = "http://172.30.248.144:8080/ReservaDeSala/rest/organizacao/organizacoesByDominio";
     @Override
     protected String doInBackground(String... strings)
     {
