@@ -101,23 +101,35 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                         String userCod = (Base64.encodeToString(usuarioJson.toString().getBytes("UTF-8"), Base64.NO_WRAP));
                         System.out.println(usuarioJson.toString());
 
-                        exibirMensagem(new VerificadorCadastro().execute(userCod).get());
-                        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginUsuarioActivity.class);
-                        startActivity(intent);
+                        String authServeidor;
+                        authServeidor = new VerificadorCadastro().execute(userCod).get();
 
+                        if (authServeidor.equals("Servidor nao responde")) {
+                            Toast.makeText(CadastroUsuarioActivity.this, "Erro ao concectar com o servidor", Toast.LENGTH_LONG).show();
+                        } else {
+                            if (authServeidor.equals("O email informado já está cadastrado")) {
+                                edEmail.setError("Email informado ja existe");
+                            } else if (authServeidor.equals("Usuário criado com sucesso")) {
+                                Intent intent = new Intent(CadastroUsuarioActivity.this, LoginUsuarioActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(CadastroUsuarioActivity.this, "Erro ao cadastrar usuario", Toast.LENGTH_LONG).show();
+                            }
+                        }
                     }
-
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
-                } catch (Exception e) {
-
                 }
             }
         });
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+
 
         edEmail.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -193,15 +205,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
-
-
-    public void exibirMensagem(String mensagem) {
-        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
-    }
-
 
 }
 

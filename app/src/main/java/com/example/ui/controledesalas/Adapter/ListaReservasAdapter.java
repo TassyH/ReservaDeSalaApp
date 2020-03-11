@@ -51,9 +51,13 @@ public class ListaReservasAdapter extends BaseAdapter {
     }
 
     private void mostraNomeSala(View viewCriada, Reserva reserva) {
-        TextView nomeLocador = viewCriada.findViewById(R.id.item_nome_sala);
+        TextView nomeLocador = viewCriada.findViewById(R.id.item_nome_organizador_reserva);
         nomeLocador.setText(reserva.getNomeOrganizador());
     }
+   /* private void mostraNomeOrganizador(View viewCriada, Reserva reserva) {
+        TextView nomeSala = viewCriada.findViewById(R.id.item_nome_sala);
+        nomeSala.setText(reserva.getNomeSala);
+    }*/
 
     private void mostraDescricao(View viewCriada, Reserva reserva) {
         TextView descricao = viewCriada.findViewById(R.id.item_descricao_reserva);

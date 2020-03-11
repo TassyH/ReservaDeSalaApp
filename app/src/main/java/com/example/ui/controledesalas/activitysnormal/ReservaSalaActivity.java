@@ -57,6 +57,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
         final FloatingActionButton btn_infor = findViewById(R.id.fab_infor);
         TextView tx_nome = findViewById(R.id.tx_nome_sala);
+        TextView nomeSala = findViewById(R.id.item_nome_sala);
         TextView tx_local = findViewById(R.id.tx_local_sala);
         TextView tx_latitude = findViewById(R.id.tx_latitude_sala);
         TextView tx_longitude = findViewById(R.id.tx_longitude_sala);
@@ -168,6 +169,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
                     Reserva novaReserva = new Reserva();
                     novaReserva.setId(id);
+                    novaReserva.setId_usuario(idUsuario);
                     novaReserva.setNomeOrganizador(nomeOrganizador);
                     novaReserva.setDescricao(descricao);
                     novaReserva.setHoraIncial(dataHoraInicio);
@@ -225,14 +227,14 @@ public class ReservaSalaActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 SharedPreferences preferences = getSharedPreferences("USER_LOGIN", 0);
                                 String verifDeleteReserva = "";
-                                String user = preferences.getString("userId", null);
-                               // int idUsuario = reservas.get(position).getId_usuario();
+
+                                int user = reservas.get(position).getId_usuario();
                                 int idReserva = reservas.get(position).getId();
 
                                 System.out.println("id da reserva pra excluir reserva: " + idReserva);
                                 System.out.println("id user brabo : " + user);
 
-                                if (user == (preferences.getString("userId", null))) {
+                                if (user == Integer.parseInt(preferences.getString("userId", null))) {
                                     try {
                                         verifDeleteReserva = new VerificadorApagarReserva().execute(String.valueOf(idReserva)).get();
                                         System.out.println("servidor delete: " + verifDeleteReserva);

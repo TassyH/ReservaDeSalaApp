@@ -51,6 +51,7 @@ public class ListaReservasFragment extends Fragment {
 
             String verifReservas = "";
             verifReservas = new VerificadorReservaByIdUsuario().execute(userid).get();
+            reservas.clear();
 
             if (verifReservas.length() > 0) {
                 JSONArray reservaJson = new JSONArray(verifReservas);
@@ -64,7 +65,6 @@ public class ListaReservasFragment extends Fragment {
                     int idUsuario = reservaJsonObjeto.getInt("idUsuario");
                     String dataHoraInicio = reservaJsonObjeto.getString("dataHoraInicio");
                     String dataHoraFim = reservaJsonObjeto.getString("dataHoraFim");
-                    //boolean ativo = reservaObjeto.getBoolean("ativo");
                     String descricao = reservaJsonObjeto.getString("descricao");
                     String nomeOrganizador = reservaJsonObjeto.getString("nomeOrganizador");
 
