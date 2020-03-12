@@ -1,5 +1,16 @@
 package com.example.ui.controledesalas.activitysnormal;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -7,27 +18,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.ui.controledesalas.Adapter.ListaReservasAdapter;
-import com.example.ui.controledesalas.Dao.ReservaDAO;
 import com.example.ui.controledesalas.Modal.Reserva;
 import com.example.ui.controledesalas.Modal.Sala;
 import com.example.ui.controledesalas.R;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorApagarReserva;
 import com.example.ui.controledesalas.ServidorHttp.VerificadorReserva;
-import com.example.ui.controledesalas.ServidorHttp.VerificadorReservaByIdUsuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
@@ -53,7 +49,6 @@ public class ReservaSalaActivity extends AppCompatActivity {
         inicializacaoDosComponentes();
         exibirDadosReserva();
         cadastrarReserva();
-        reservas.clear();
 
         final FloatingActionButton btn_infor = findViewById(R.id.fab_infor);
         TextView tx_nome = findViewById(R.id.tx_nome_sala);
@@ -137,8 +132,6 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
                 }
 
-                System.out.println(preferences.getString("idSala", null));//id da sala vindo do pref
-
             }
 
         } catch (Exception e) {
@@ -147,16 +140,15 @@ public class ReservaSalaActivity extends AppCompatActivity {
 
 
         try {
-            String userid = preferences.getString("idSala", null);
+            String idsala = preferences.getString("idSala", null);
             String verifReservas = "";
-            verifReservas = new VerificadorReserva().execute(userid).get();
+            verifReservas = new VerificadorReserva().execute(idsala).get();
 
             if (verifReservas.length() > 0) {
                 JSONArray reservaJson = new JSONArray(verifReservas);
                 System.out.println("reserva: " + verifReservas);
                 for (int i = 0; i < reservaJson.length(); i++) {
                     JSONObject reservaJsonObjeto = reservaJson.getJSONObject(i);
-                    reservas.clear();
                     int id = reservaJsonObjeto.getInt("id");
                     int idSala = reservaJsonObjeto.getInt("idSala");
                     int idUsuario = reservaJsonObjeto.getInt("idUsuario");
@@ -165,17 +157,16 @@ public class ReservaSalaActivity extends AppCompatActivity {
                     String descricao = reservaJsonObjeto.getString("descricao");
                     String nomeOrganizador = reservaJsonObjeto.getString("nomeOrganizador");
 
-                    excluirReserva(id);
-
                     Reserva novaReserva = new Reserva();
                     novaReserva.setId(id);
+                    novaReserva.setId_sala(idSala);
                     novaReserva.setId_usuario(idUsuario);
                     novaReserva.setNomeOrganizador(nomeOrganizador);
                     novaReserva.setDescricao(descricao);
                     novaReserva.setHoraIncial(dataHoraInicio);
                     novaReserva.setHoraFinal(dataHoraFim);
                     reservas.add(novaReserva);
-
+                    excluirReserva(id);
                 }
 
                 ListView listaDeReservas = findViewById(R.id.listViewReservas);
@@ -191,10 +182,6 @@ public class ReservaSalaActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
         FloatingActionButton botaoNovaReserva = findViewById(R.id.fab_reserva);
         botaoNovaReserva.setOnClickListener(new View.OnClickListener() {
