@@ -62,7 +62,7 @@ public class ReservaSalaActivity extends AppCompatActivity {
         TextView tx_midia = findViewById(R.id.tx_possuiMidia_sala);
         TextView tx_carqcteristicas = findViewById(R.id.tx_caracteristicas_sala);
         final ConstraintLayout expandir = findViewById(R.id.layoutExpand);
-        final CardView cardView = findViewById(R.id.card_reserva);
+        final CardView cardView = findViewById(R.id.card_dados_sala);
 
         SharedPreferences preferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
 
